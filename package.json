@@ -1,0 +1,47 @@
+{
+	"name": "asyncview",
+	"version": "1.0.1",
+	"description": "Cute HTTP-like logger for Node-Express displaying async responses and requests",
+	"engines": {
+		"node": ">=4.0.0"
+	},
+	"homepage": "https://github.com/shinbatsu/asyncview",
+	"main": "lib/asyncview.js",
+	"scripts": {
+	},
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"prettier --write",
+			"eslint --fix --ignore-pattern lib",
+			"git add"
+		],
+		"*.{css,scss,json,md}": [
+			"prettier --write",
+			"git add"
+		]
+	},
+	"author": "Shinbatsu <shinbatsu@gmail.com> (https://github.com/shinbatsu)",
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.3.4",
+		"@babel/preset-env": "^7.3.4",
+		"babel-eslint": "^8.2.3",
+		"chai": "^4.1.2",
+		"eslint": "^4.19.1",
+		"eslint-config-fullstack": "^5.0.0",
+		"eslint-config-prettier": "^2.9.0",
+		"eslint-plugin-react": "^7.7.0",
+		"express": "^4.16.3"
+	},
+	"dependencies": {
+		"chalk": "^3.0.0",
+		"debug": "^3.1.0",
+		"filesize": "^3.6.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/shinbatsu/asyncview.git"
+	},
+	"bugs": "https://github.com/shinbatsu/asyncview/issues"
+}
