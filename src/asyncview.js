@@ -22,3 +22,15 @@ function getLogger(debugSelect) {
 function defaultLogger(str) {
 	process.stdout.write(str + '\n')
 }
+
+function logRequest(request, cycle) {
+	const contentSize = +request.headers['content-length']
+	const contentType = request.headers['content-type']
+
+	let requestLine = `${cycle.id} ${chalk.dim('——>')} `
+	requestLine += `${chalk.bold.underline(request.method)} ${request.url} `
+	if (contentSize) requestLine += chalk.blue(filesize(contentSize)) + splitter
+	if (contentType) requestLine += chalk.blue.dim(contentType)
+
+	cycle.log(requestLine)
+}
