@@ -52,3 +52,31 @@ function logResponse(response, cycle) {
 
 	cycle.log(responseLine)
 }
+
+
+function logClose(response, cycle) {
+	let closeLine = `${cycle.id} ${chalk.dim('—X—')} `
+	closeLine += chalk.red('connection closed before response end/flush')
+
+	cycle.log(closeLine)
+}
+
+const statusColors = [
+  { range: 500, color: 'red' },
+  { range: 400, color: 'yellow' },
+  { range: 300, color: 'cyan' },
+  { range: 200, color: 'green' },
+  { range: 100, color: 'blue' }
+]
+
+function colorStatus(status) {
+  return (statusColors.find(({ range }) => status >= range) || { color: 'gray' }).color
+}
+
+function timeDiff(time) {
+	var diff = process.hrtime(time)
+	const seconds = diff[0]
+	const nanoseconds = diff[1]
+	const ms = (seconds * 1e9 + nanoseconds) / 1e6
+	return ms.toFixed(1)
+}
