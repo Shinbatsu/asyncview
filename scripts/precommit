@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "Touching temp .commit flag"
+echo "Temp flag file, now safely delete it!" > .commit
+exit

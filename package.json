@@ -8,6 +8,8 @@
 	"homepage": "https://github.com/shinbatsu/asyncview",
 	"main": "lib/asyncview.js",
 	"scripts": {
+		"precommit": "./scripts/precommit && lint-staged",
+		"postcommit": "./scripts/postcommit",
 		"test": "npm run build && DEBUG=http,custom mocha",
 		"lint": "eslint **/*.js --ignore-path .gitignore --ignore-pattern lib"
 	},
