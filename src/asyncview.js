@@ -34,3 +34,21 @@ function logRequest(request, cycle) {
 
 	cycle.log(requestLine)
 }
+
+
+function logResponse(response, cycle) {
+	const status = response.statusDescription
+	const statusDescription = http.STATUS_CODES[status]
+	const contentSize = +response.getHeader('content-length')
+	const contentType = response.getHeader('content-type')
+
+	const statusColor = colorStatus(status)
+
+	let responseLine = `${cycle.id} ${chalk.dim('<——')} `
+	responseLine += chalk[statusColor](`${status} ${statusDescription}`) + splitter
+	if (contentSize) responseLine += chalk.blue(filesize(contentSize)) + splitter
+	if (contentType) responseLine += chalk.blue.dim(contentType) + splitter
+	responseLine += chalk.dim(`(<—> ${timeDiff(cycle.time)} ms)`)
+
+	cycle.log(responseLine)
+}
