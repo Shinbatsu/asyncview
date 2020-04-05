@@ -10,8 +10,10 @@
 	"scripts": {
 		"precommit": "./scripts/precommit && lint-staged",
 		"postcommit": "./scripts/postcommit",
+		"prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
 		"test": "npm run build && DEBUG=http,custom mocha",
-		"lint": "eslint **/*.js --ignore-path .gitignore --ignore-pattern lib"
+		"lint": "eslint **/*.js --ignore-path .gitignore --ignore-pattern lib",
+		"build": "babel src -d lib"
 	},
 	"lint-staged": {
 		"*.{js,jsx}": [
