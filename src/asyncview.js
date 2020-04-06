@@ -10,6 +10,31 @@ var splitter = ' '
 
 module.exports = asyncview()
 
+function asyncview(config = {}) {
+	const log = getLogger(config.debug)
+
+	function asyncview(request, response, next) {
+		const cycle = {
+			log: log,
+			id: makeId(),
+			time: process.hrtime(),
+		}
+
+		logRequest(request, cycle)
+
+		const handleError = () => logClose(response, cycle)
+		response.on('finish', () => {
+			logResponse(response, cycle)
+			response.removeListener('close', handleError)
+		})
+		response.on('close', handleError)
+
+		next()
+	}
+	asyncview.custom = (...args) => asyncview(...args)
+
+	return asyncview
+}
 
 function getLogger(debugSelect) {
 	if (!debugSelect) return defaultLogger
@@ -35,7 +60,6 @@ function logRequest(request, cycle) {
 	cycle.log(requestLine)
 }
 
-
 function logResponse(response, cycle) {
 	const status = response.statusDescription
 	const statusDescription = http.STATUS_CODES[status]
@@ -52,7 +76,6 @@ function logResponse(response, cycle) {
 
 	cycle.log(responseLine)
 }
-
 
 function logClose(response, cycle) {
 	let closeLine = `${cycle.id} ${chalk.dim('—X—')} `
