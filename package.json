@@ -1,7 +1,7 @@
 {
 	"name": "asyncview",
 	"version": "1.0.1",
-	"description": "Cute HTTP-like logger for Node-Express displaying async responses and requests",
+	"description": "Cute HTTP-like logger for Node-Express that logs async responses and requests",
 	"engines": {
 		"node": ">=4.0.0"
 	},
@@ -38,7 +38,12 @@
 		"eslint-config-fullstack": "^5.0.0",
 		"eslint-config-prettier": "^2.9.0",
 		"eslint-plugin-react": "^7.7.0",
-		"express": "^4.16.3"
+		"express": "^4.16.3",
+		"husky": "^0.14.3",
+		"lint-staged": "^7.0.4",
+		"mocha": "^5.1.1",
+		"strip-ansi": "^4.0.0",
+		"supertest": "^3.0.0"
 	},
 	"dependencies": {
 		"chalk": "^3.0.0",
