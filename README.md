@@ -79,3 +79,14 @@ The `debug` option works with the [`debug`](https://github.com/visionmedia/debug
 | `true`     | creates a debug instance with the default namespace `'http'`                                                |
 | `string`   | creates a debug instance using the given namespace                                                          |
 | `function` | uses any custom function (for example, an existing debug instance). It will be called with colorized output |
+
+## Alternatives
+
+If you need more advanced or flexible logging, you might prefer:
+
+* [debug](https://github.com/visionmedia/debug#readme)
+* [morgan](https://github.com/expressjs/morgan#readme)
+* [morgan-debug](https://github.com/ChiperSoft/morgan-debug#readme)
+* [winston](https://github.com/winstonjs/winston#readme)
+* [express-winston](https://github.com/bithavoc/express-winston#readme)
+* [node-bunyan](https://github.com/trentm/node-bunyan/#readme)
